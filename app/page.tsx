@@ -1,199 +1,289 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Luminous Digital Studio",
-  description: "Websites and apps for small businesses",
+  title: "Kindled Co — Websites & Apps",
+  description: "Websites and apps for small businesses, built by a solo developer on the Sunshine Coast.",
 };
+
+const work = [
+  {
+    name: "PeakPilot",
+    status: "live",
+    statusLabel: "Live · Google Play",
+    tagline: "A fitness app for tracking training and building streaks.",
+    built: "React Native app, subscription billing, Android release.",
+    image: "/images/work/peakpilot.jpg",
+  },
+  {
+    name: "Heart Central",
+    status: "building",
+    statusLabel: "In development",
+    tagline: "A community events and marketplace platform for the Sunshine Coast.",
+    built: "Full web platform — event listings, stallholders, marketplace.",
+    image: "/images/work/heart-central.jpg",
+  },
+  {
+    name: "Luminous By Nature",
+    status: "live",
+    statusLabel: "Live",
+    tagline: "A stained glass workshop business, rebuilt around bookings.",
+    built: "Full site redesign, mobile-friendly, workshop-first.",
+    image: "/images/work/luminous-by-nature.jpg",
+  },
+];
+
+const services = [
+  {
+    name: "Website Builds",
+    desc: "A professional site for your business, live and working — usually within 2–4 weeks.",
+  },
+  {
+    name: "Website Refreshes",
+    desc: "Got an outdated site? I'll modernise it without losing what already works.",
+  },
+  {
+    name: "App Prototypes & MVPs",
+    desc: "Turn your app idea into a real, testable product people can actually use.",
+  },
+];
+
+const steps = [
+  { n: "01", title: "Chat", desc: "A free, no-pressure conversation about what you need." },
+  { n: "02", title: "Quote", desc: "A clear, written scope and price — no surprises." },
+  { n: "03", title: "Build", desc: "I build it, and you see progress along the way." },
+  { n: "04", title: "Launch", desc: "It goes live, on your own domain." },
+  { n: "05", title: "Support", desc: "Optional ongoing care plans if you'd like updates handled for you." },
+];
+
+const pricing = [
+  {
+    name: "Starter Site",
+    price: "from $750",
+    desc: "A clean one-page site to get you online fast.",
+  },
+  {
+    name: "Business Site",
+    price: "from $1,800",
+    desc: "Multi-page site with booking/contact forms, tailored design.",
+    featured: true,
+  },
+  {
+    name: "App MVP",
+    price: "from $3,500",
+    desc: "A working app prototype to test your idea or launch small.",
+  },
+];
 
 export default function Home() {
   return (
-    <main className="min-h-screen px-6 py-10 max-w-6xl mx-auto">
+    <main className="bg-ink">
 
       {/* Hero */}
-      <section className="relative overflow-hidden rounded-[2rem] border border-gray-200 bg-gradient-to-b from-white via-gray-50 to-white px-8 py-28 text-center mb-28 shadow-sm">
+      <section className="max-w-6xl mx-auto px-6 pt-20 pb-24 grid lg:grid-cols-2 gap-16 items-center">
 
-        <div className="absolute inset-0 opacity-30 blur-3xl bg-gradient-to-r from-orange-100 via-pink-100 to-yellow-100"></div>
-
-        <div className="relative z-10">
-
-          <p className="uppercase tracking-[0.35em] text-sm text-gray-500 mb-6">
-            Websites • Apps • Creative Digital Experiences
+        <div>
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-gold mb-6">
+            Sunshine Coast, QLD
           </p>
 
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-8">
-            Luminous
-            <br />
-            Digital Studio
+          <h1 className="font-display font-bold text-5xl md:text-6xl leading-[1.05] text-parchment mb-6">
+            Websites &amp; apps,<br />built by someone<br />who actually<br />builds them.
           </h1>
 
-          <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto mb-12">
-            Beautiful websites and modern digital experiences crafted for small businesses, creatives, and ambitious ideas.
+          <p className="text-lg text-parchment-dim leading-relaxed max-w-lg mb-10">
+            I&rsquo;m Paul — a solo developer who designs, builds, and launches
+            websites and apps for small businesses and creative ideas. No agency
+            overhead, no jargon. Just a working product, built well.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-
-            <a
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link
               href="/contact"
-              className="px-8 py-4 rounded-2xl bg-black text-white hover:opacity-90 transition shadow-lg"
+              className="px-7 py-3.5 rounded-lg bg-ember text-ink font-semibold hover:opacity-90 transition text-center"
             >
               Start Your Project
-            </a>
-
+            </Link>
             <a
-              href="#services"
-              className="px-8 py-4 rounded-2xl border border-gray-300 hover:bg-gray-100 transition"
+              href="#work"
+              className="px-7 py-3.5 rounded-lg border border-surface-line text-parchment hover:border-gold transition text-center"
             >
-              View Services
+              See My Work
             </a>
+          </div>
+        </div>
 
+        {/* Signature element: a build-log terminal card */}
+        <div className="rounded-xl border border-surface-line bg-surface overflow-hidden shadow-2xl">
+          <div className="flex items-center gap-2 px-5 py-3 border-b border-surface-line">
+            <span className="w-2.5 h-2.5 rounded-full bg-ember/60" />
+            <span className="w-2.5 h-2.5 rounded-full bg-gold/60" />
+            <span className="w-2.5 h-2.5 rounded-full bg-live/60" />
+            <span className="ml-2 font-mono text-xs text-parchment-dim">kindled --status</span>
+          </div>
+          <div className="p-6 font-mono text-sm space-y-4">
+            {work.map((w) => (
+              <div key={w.name} className="flex items-start gap-3">
+                <span
+                  className={`mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 ${
+                    w.status === "live" ? "bg-live" : "bg-gold"
+                  }`}
+                />
+                <div>
+                  <p className="text-parchment">
+                    {w.name}{" "}
+                    <span className={w.status === "live" ? "text-live" : "text-gold"}>
+                      [{w.statusLabel}]
+                    </span>
+                  </p>
+                  <p className="text-parchment-dim text-xs mt-0.5">{w.tagline}</p>
+                </div>
+              </div>
+            ))}
+            <p className="text-parchment-dim pt-2">
+              <span className="text-ember">$</span> _
+            </p>
+          </div>
+        </div>
+
+      </section>
+
+      {/* My Work */}
+      <section id="work" className="border-t border-surface-line bg-surface">
+        <div className="max-w-6xl mx-auto px-6 py-24">
+
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-gold mb-4">My Work</p>
+          <h2 className="font-display font-bold text-3xl md:text-4xl text-parchment mb-16 max-w-xl">
+            Real products, not concept mockups.
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {work.map((w) => (
+              <div
+                key={w.name}
+                className="rounded-xl border border-surface-line bg-ink overflow-hidden group"
+              >
+                <div className="aspect-[4/3] overflow-hidden bg-surface">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={w.image}
+                    alt={w.name}
+                    className="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full ${
+                        w.status === "live" ? "bg-live" : "bg-gold"
+                      }`}
+                    />
+                    <span className="font-mono text-xs text-parchment-dim">{w.statusLabel}</span>
+                  </div>
+                  <h3 className="font-display font-bold text-xl text-parchment mb-2">{w.name}</h3>
+                  <p className="text-parchment-dim text-sm leading-relaxed mb-3">{w.tagline}</p>
+                  <p className="text-parchment-dim/70 text-xs leading-relaxed">Built: {w.built}</p>
+                </div>
+              </div>
+            ))}
           </div>
 
         </div>
-
       </section>
 
       {/* Services */}
-      <section
-        id="services"
-        className="mb-28"
-      >
+      <section id="services" className="max-w-6xl mx-auto px-6 py-24">
 
-        <h2 className="text-3xl font-bold text-center mb-12">
-          Services
+        <p className="font-mono text-xs uppercase tracking-[0.3em] text-gold mb-4">Services</p>
+        <h2 className="font-display font-bold text-3xl md:text-4xl text-parchment mb-16 max-w-xl">
+          Three ways to get started.
         </h2>
 
-        <div className="grid gap-8 md:grid-cols-3">
-
-          <div className="p-8 rounded-3xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition">
-
-            <h3 className="text-xl font-semibold mb-4">
-              Website Builds
-            </h3>
-
-            <p className="text-gray-600 leading-relaxed">
-              Clean, modern websites designed to help your business stand out and convert visitors into customers.
-            </p>
-
-          </div>
-
-          <div className="p-8 rounded-3xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition">
-
-            <h3 className="text-xl font-semibold mb-4">
-              Website Refreshes
-            </h3>
-
-            <p className="text-gray-600 leading-relaxed">
-              Transform outdated websites into polished, professional digital experiences.
-            </p>
-
-          </div>
-
-          <div className="p-8 rounded-3xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition">
-
-            <h3 className="text-xl font-semibold mb-4">
-              App Prototypes
-            </h3>
-
-            <p className="text-gray-600 leading-relaxed">
-              Functional app concepts and MVP experiences designed to bring ideas to life quickly.
-            </p>
-
-          </div>
-
+        <div className="grid gap-6 md:grid-cols-3">
+          {services.map((s) => (
+            <div
+              key={s.name}
+              className="p-8 rounded-xl border border-surface-line bg-surface hover:border-gold/50 transition"
+            >
+              <h3 className="font-display font-bold text-lg text-parchment mb-3">{s.name}</h3>
+              <p className="text-parchment-dim text-sm leading-relaxed">{s.desc}</p>
+            </div>
+          ))}
         </div>
 
       </section>
 
-      {/* Portfolio */}
-      <section className="mb-32">
+      {/* How It Works */}
+      <section className="border-t border-surface-line bg-surface">
+        <div className="max-w-6xl mx-auto px-6 py-24">
 
-        <div className="text-center mb-14">
-
-          <p className="uppercase tracking-[0.3em] text-sm text-gray-500 mb-4">
-            Featured Projects
-          </p>
-
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Crafted Digital Experiences
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-gold mb-4">Process</p>
+          <h2 className="font-display font-bold text-3xl md:text-4xl text-parchment mb-16 max-w-xl">
+            How it works.
           </h2>
 
-          <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
-            Concept websites and digital experiences crafted to showcase modern branding, clean layouts, and strong customer experience.
-          </p>
+          <div className="grid md:grid-cols-5 gap-8">
+            {steps.map((s) => (
+              <div key={s.n}>
+                <p className="font-mono text-ember text-sm mb-3">{s.n}</p>
+                <h3 className="font-display font-bold text-parchment mb-2">{s.title}</h3>
+                <p className="text-parchment-dim text-sm leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
+          </div>
 
         </div>
-
-        <div className="group relative overflow-hidden rounded-[2rem] border border-gray-200 shadow-xl">
-
-          <a href="/portfolio/willow-oak-cafe">
-
-            <img
-              src="/images/portfolio-showcase.png"
-              alt="Luminous Digital Studio Portfolio"
-              className="w-full transition duration-700 group-hover:scale-[1.02]"
-            />
-
-          </a>
-
-        </div>
-
       </section>
 
-      {/* Offer */}
-      <section className="mb-28 text-center">
+      {/* Pricing */}
+      <section id="pricing" className="max-w-6xl mx-auto px-6 py-24">
 
-        <h2 className="text-3xl font-bold mb-6">
-          Starter Website Package
+        <p className="font-mono text-xs uppercase tracking-[0.3em] text-gold mb-4">Pricing</p>
+        <h2 className="font-display font-bold text-3xl md:text-4xl text-parchment mb-4 max-w-xl">
+          Straightforward pricing.
         </h2>
-
-        <p className="text-gray-600 text-lg mb-10 max-w-2xl mx-auto">
-          A clean, professional one-page website designed to get your business online quickly and confidently.
+        <p className="text-parchment-dim mb-16 max-w-xl">
+          Every project starts with a free chat — get in touch for an exact quote.
         </p>
 
-        <div className="max-w-xl mx-auto rounded-3xl border border-gray-200 p-10 shadow-sm bg-white">
-
-          <ul className="space-y-4 text-left text-gray-700 mb-10">
-
-            <li>✓ Mobile-friendly design</li>
-            <li>✓ Contact form</li>
-            <li>✓ Modern layout</li>
-            <li>✓ Launch support</li>
-
-          </ul>
-
-          <p className="text-4xl font-bold mb-6">
-            $750
-          </p>
-
-          <a
-            href="/contact"
-            className="inline-block px-8 py-4 rounded-2xl bg-black text-white hover:opacity-90 transition"
-          >
-            Enquire Now
-          </a>
-
+        <div className="grid md:grid-cols-3 gap-6">
+          {pricing.map((p) => (
+            <div
+              key={p.name}
+              className={`p-8 rounded-xl border ${
+                p.featured
+                  ? "border-ember bg-surface shadow-xl shadow-ember/5"
+                  : "border-surface-line bg-surface"
+              }`}
+            >
+              <h3 className="font-display font-bold text-lg text-parchment mb-2">{p.name}</h3>
+              <p className="font-display font-bold text-3xl text-gold mb-4">{p.price}</p>
+              <p className="text-parchment-dim text-sm leading-relaxed">{p.desc}</p>
+            </div>
+          ))}
         </div>
 
       </section>
 
       {/* CTA */}
-      <section className="text-center pb-20">
+      <section className="border-t border-surface-line bg-surface">
+        <div className="max-w-3xl mx-auto px-6 py-24 text-center">
 
-        <h2 className="text-4xl font-bold mb-6">
-          Let’s Build Something Great
-        </h2>
+          <h2 className="font-display font-bold text-3xl md:text-4xl text-parchment mb-6">
+            Got an idea? Let&rsquo;s build it.
+          </h2>
+          <p className="text-parchment-dim text-lg mb-10">
+            Whether it&rsquo;s a business that needs to get online, or an app idea
+            you&rsquo;ve been sitting on — I&rsquo;d love to hear about it.
+          </p>
+          <Link
+            href="/contact"
+            className="inline-block px-8 py-4 rounded-lg bg-ember text-ink font-semibold hover:opacity-90 transition"
+          >
+            Get In Touch
+          </Link>
 
-        <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-10">
-          Ready to bring your business online or elevate your current digital presence?
-        </p>
-
-        <a
-          href="/contact"
-          className="inline-block px-10 py-4 rounded-2xl bg-black text-white hover:opacity-90 transition shadow-lg"
-        >
-          Get In Touch
-        </a>
-
+        </div>
       </section>
 
     </main>
