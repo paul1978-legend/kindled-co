@@ -11,7 +11,7 @@ export default function Footer() {
         </p>
 
         <p className="text-sm text-parchment-dim text-center">
-          Sunshine Coast, QLD &middot; built &amp; run by one person
+          Sunshine Coast, QLD &middot; one developer, real products
         </p>
 
         <Link href="/contact" className="text-sm text-gold hover:text-ember transition">
