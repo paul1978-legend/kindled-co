@@ -19,12 +19,23 @@ export default function ContactPage() {
           if it&rsquo;s a fit, a clear quote.
         </p>
 
-        <form className="space-y-5">
+        <form
+          action="https://api.web3forms.com/submit"
+          method="POST"
+          className="space-y-5"
+        >
+          {/* Replace the value below with your own Web3Forms access key */}
+          <input type="hidden" name="access_key" value="11d46d6e-2961-4eec-9a06-c65c4c15c784" />
+          <input type="hidden" name="subject" value="New enquiry from Kindled Co website" />
+          {/* Honeypot spam trap — leave this as is, real visitors never see it */}
+          <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
 
           <div>
             <label className="block text-sm text-parchment-dim mb-2">Your Name</label>
             <input
               type="text"
+              name="name"
+              required
               className="w-full rounded-lg border border-surface-line bg-surface px-4 py-3 text-parchment placeholder:text-parchment-dim/50 focus:outline-none focus:border-gold transition"
               placeholder="Jane Smith"
             />
@@ -34,6 +45,8 @@ export default function ContactPage() {
             <label className="block text-sm text-parchment-dim mb-2">Your Email</label>
             <input
               type="email"
+              name="email"
+              required
               className="w-full rounded-lg border border-surface-line bg-surface px-4 py-3 text-parchment placeholder:text-parchment-dim/50 focus:outline-none focus:border-gold transition"
               placeholder="jane@example.com"
             />
@@ -42,6 +55,8 @@ export default function ContactPage() {
           <div>
             <label className="block text-sm text-parchment-dim mb-2">Project Details</label>
             <textarea
+              name="message"
+              required
               rows={6}
               className="w-full rounded-lg border border-surface-line bg-surface px-4 py-3 text-parchment placeholder:text-parchment-dim/50 focus:outline-none focus:border-gold transition"
               placeholder="What are you looking to build?"
@@ -54,6 +69,11 @@ export default function ContactPage() {
           >
             Send Enquiry
           </button>
+
+          <p className="text-xs text-parchment-dim/70 leading-relaxed pt-2">
+            Your details are only used to reply to your enquiry &mdash; never shared
+            or added to any mailing list without your say-so.
+          </p>
 
         </form>
 

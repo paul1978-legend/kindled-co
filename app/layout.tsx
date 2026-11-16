@@ -23,6 +23,7 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://kindledco.com.au"),
   title: "Kindled Co — Websites & Apps",
   description:
     "Websites and apps built by a solo developer on the Sunshine Coast, QLD. Real, working products — not just mockups.",
