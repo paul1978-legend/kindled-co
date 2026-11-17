@@ -8,12 +8,30 @@ export const metadata: Metadata = {
 
 const work = [
   {
+    name: "Luminous By Nature",
+    status: "live",
+    statusLabel: "Live",
+    tagline: "A stained glass workshop business, rebuilt around bookings.",
+    built: "Full site redesign, mobile-friendly, workshop-first.",
+    kind: "web",
+    desktop: "/images/work/lbn-desktop.jpg",
+    phone: "/images/work/lbn-phone.jpg",
+    phones: [] as string[],
+  },
+  {
     name: "PeakPilot",
     status: "live",
     statusLabel: "Live · Google Play",
     tagline: "A fitness app for tracking training and building streaks.",
     built: "React Native app, subscription billing, Android release.",
-    image: "/images/work/peakpilot.jpg",
+    kind: "app",
+    desktop: "",
+    phone: "",
+    phones: [
+      "/images/work/pp-home.jpg",
+      "/images/work/pp-plan.jpg",
+      "/images/work/pp-history.jpg",
+    ],
   },
   {
     name: "Heart Central",
@@ -21,15 +39,25 @@ const work = [
     statusLabel: "In development",
     tagline: "A community events and marketplace platform for the Sunshine Coast.",
     built: "Full web platform — event listings, stallholders, marketplace.",
-    image: "/images/work/heart-central.jpg",
+    kind: "web",
+    desktop: "/images/work/hc-desktop.jpg",
+    phone: "/images/work/hc-phone.jpg",
+    phones: [] as string[],
   },
   {
-    name: "Luminous By Nature",
-    status: "live",
-    statusLabel: "Live",
-    tagline: "A stained glass workshop business, rebuilt around bookings.",
-    built: "Full site redesign, mobile-friendly, workshop-first.",
-    image: "/images/work/luminous-by-nature.jpg",
+    name: "NutriPrice",
+    status: "building",
+    statusLabel: "In testing",
+    tagline: "A grocery health and price app that helps you shop smarter.",
+    built: "React Native app with a live backend, health scores and smart cart swaps.",
+    kind: "app",
+    desktop: "",
+    phone: "",
+    phones: [
+      "/images/work/np-cart.jpg",
+      "/images/work/np-product.jpg",
+      "/images/work/np-home.jpg",
+    ],
   },
 ];
 
@@ -157,19 +185,39 @@ export default function Home() {
             Real products, not concept mockups.
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             {work.map((w) => (
               <div
                 key={w.name}
-                className="rounded-xl border border-surface-line bg-ink overflow-hidden group"
+                className="rounded-xl border border-surface-line bg-ink overflow-hidden"
               >
-                <div className="aspect-[4/3] overflow-hidden bg-surface">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={w.image}
-                    alt={w.name}
-                    className="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105"
-                  />
+                <div className="relative aspect-[16/10] overflow-hidden bg-surface">
+                  {w.kind === "web" ? (
+                    <>
+                      <div className="absolute left-[6%] top-[9%] w-[76%] rounded-lg border border-surface-line overflow-hidden shadow-2xl bg-ink">
+                        <div className="flex items-center gap-1.5 px-3 py-2 bg-surface border-b border-surface-line">
+                          <span className="w-2 h-2 rounded-full bg-ember/60" />
+                          <span className="w-2 h-2 rounded-full bg-gold/60" />
+                          <span className="w-2 h-2 rounded-full bg-live/60" />
+                        </div>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={w.desktop} alt={`${w.name} website on a computer`} className="w-full h-auto block" loading="lazy" />
+                      </div>
+                      <div className="absolute right-[5%] top-[22%] w-[21%] rounded-2xl border-2 border-surface-line overflow-hidden shadow-2xl bg-ink">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={w.phone} alt={`${w.name} website on a phone`} className="w-full h-auto block" loading="lazy" />
+                      </div>
+                    </>
+                  ) : (
+                    <div className="absolute inset-x-0 top-[9%] flex justify-center gap-[3%] px-[5%]">
+                      {w.phones.map((src, i) => (
+                        <div key={src} className="w-[28%] rounded-2xl border-2 border-surface-line overflow-hidden shadow-2xl bg-ink">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={src} alt={`${w.name} app screen ${i + 1}`} className="w-full h-auto block" loading="lazy" />
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-3">
