@@ -87,18 +87,18 @@ const steps = [
 const pricing = [
   {
     name: "Starter Site",
-    price: "from $750",
+    price: "from $900",
     desc: "A clean one-page site to get you online fast.",
   },
   {
     name: "Business Site",
-    price: "from $1,800",
+    price: "from $2,400",
     desc: "Multi-page site with booking/contact forms, tailored design.",
     featured: true,
   },
   {
     name: "App MVP",
-    price: "from $3,500",
+    price: "from $5,000",
     desc: "A working app prototype to test your idea or launch small.",
   },
   {
