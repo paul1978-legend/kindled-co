@@ -23,7 +23,8 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://kindledco.com.au"),
+  metadataBase: new URL("https://www.kindledco.com.au"),
+  alternates: { canonical: "/" },
   title: "Kindled Co — Websites & Apps",
   description:
     "Websites and apps built by a solo developer on the Sunshine Coast, QLD. Real, working products — not just mockups.",
@@ -37,6 +38,20 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} ${plexMono.variable}`}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              name: "Kindled Co",
+              url: "https://www.kindledco.com.au",
+              description:
+                "Websites and apps built by a solo developer on the Sunshine Coast, QLD.",
+              areaServed: "Sunshine Coast, Queensland, Australia",
+            }),
+          }}
+        />
         <Navbar />
         {children}
         <Footer />

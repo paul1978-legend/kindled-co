@@ -1,6 +1,12 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+  const pathname = usePathname();
+  const onContact = pathname === "/contact";
+
   return (
     <footer className="border-t border-surface-line bg-ink">
       <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -14,9 +20,11 @@ export default function Footer() {
           Sunshine Coast, QLD &middot; one developer, real products
         </p>
 
-        <Link href="/contact" className="text-sm text-gold hover:text-ember transition">
-          Get in touch &rarr;
-        </Link>
+        {!onContact && (
+          <Link href="/contact" className="text-sm text-gold hover:text-ember transition">
+            Get in touch &rarr;
+          </Link>
+        )}
 
       </div>
     </footer>

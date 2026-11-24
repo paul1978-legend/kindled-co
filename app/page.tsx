@@ -22,7 +22,7 @@ const work = [
     name: "PeakPilot",
     status: "live",
     statusLabel: "Live · Google Play",
-    tagline: "A fitness app for tracking training and building streaks.",
+    tagline: "A workout finder and fitness app for tracking training and building streaks.",
     built: "React Native app, subscription billing, Android release.",
     kind: "app",
     desktop: "",
@@ -37,8 +37,8 @@ const work = [
     name: "Heart Central",
     status: "building",
     statusLabel: "In development",
-    tagline: "A community events and marketplace platform for the Sunshine Coast.",
-    built: "Full web platform — event listings, stallholders, marketplace.",
+    tagline: "A community and marketplace platform for discovering local events near you.",
+    built: "Full web platform — event listings, stallholders, marketplace. A worldwide mobile app is next.",
     kind: "web",
     desktop: "/images/work/hc-desktop.jpg",
     phone: "/images/work/hc-phone.jpg",
@@ -100,6 +100,11 @@ const pricing = [
     name: "App MVP",
     price: "from $3,500",
     desc: "A working app prototype to test your idea or launch small.",
+  },
+  {
+    name: "Care Plan",
+    price: "from $100/mo",
+    desc: "Optional. Updates, backups, security checks and small changes, handled for you.",
   },
 ];
 
@@ -168,9 +173,6 @@ export default function Home() {
                 </div>
               </div>
             ))}
-            <p className="text-parchment-dim pt-2">
-              <span className="text-ember">$</span> _
-            </p>
           </div>
         </div>
 
@@ -294,7 +296,7 @@ export default function Home() {
           Every project starts with a free chat — get in touch for an exact quote.
         </p>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {pricing.map((p) => (
             <div
               key={p.name}
